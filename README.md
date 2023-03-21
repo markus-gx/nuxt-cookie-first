@@ -36,13 +36,13 @@ and user consent with minimal effort while providing an optimal user experience.
 
 ```bash
 # Using pnpm
-pnpm add -D nuxt-cookie-first
+pnpm add nuxt-cookie-first
 
 # Using yarn
-yarn add --dev nuxt-cookie-first
+yarn add nuxt-cookie-first
 
 # Using npm
-npm install --save-dev nuxt-cookie-first
+npm install nuxt-cookie-first
 ```
 
 2. Add `nuxt-cookie-first` to the `modules` section of `nuxt.config.ts`
