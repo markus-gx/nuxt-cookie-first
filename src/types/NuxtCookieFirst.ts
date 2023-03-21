@@ -54,4 +54,19 @@ export interface NuxtCookieFirst{
    * Accept all consent categories
    */
   acceptAllCategories: () => void;
+  /**
+   * This function allows you to accept only the categories, which have been previously pre-selected in the domain settings screen in CookieFirst admin panel.
+   */
+  acceptPreselectedCategories: () => void;
+  /**
+   * This function allows you to accept only the necessary category and decline all other categories, with one line of code.
+   * Although it may seem similar to the withdrawConsent() function, it doesn't erase the consent completely and doesn't show the cookie banner.
+   * It updates the consent to have only the necessary cookies enabled.
+   */
+  declineAllCategories: () => void;
+  /**
+   * This function allows you to decline only one cookie category and preserve the rest of the consent as it was previously saved.
+   * @param category
+   */
+  declineCategory: (category: CookieFirstCategoriesType) => void;
 }

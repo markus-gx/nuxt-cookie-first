@@ -11,4 +11,7 @@ export interface CookieFirst{
   updateConsent: (categories: CookieFirstCategories) => void;
   acceptCategory: (category: CookieFirstCategoriesType) => void;
   acceptAllCategories: () => void;
+  acceptPreselectedCategories: () => void;
+  declineAllCategories: () => void;
+  declineCategory: (category: CookieFirstCategoriesType) => void;
  }

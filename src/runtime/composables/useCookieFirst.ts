@@ -92,6 +92,24 @@ export default function (): NuxtCookieFirst {
     }
   }
 
+  const acceptPreselectedCategories = () => {
+    if(cookieFirst.value){
+      cookieFirst.value.acceptPreselectedCategories()
+    }
+  }
+
+  const declineAllCategories = () => {
+    if(cookieFirst.value){
+      cookieFirst.value.declineAllCategories()
+    }
+  }
+
+  const declineCategory = (category: CookieFirstCategoriesType) => {
+    if(cookieFirst.value){
+      cookieFirst.value.declineCategory(category)
+    }
+  }
+
   return {
     init,
     cookieFirst: computed(() => cookieFirst.value),
@@ -102,6 +120,9 @@ export default function (): NuxtCookieFirst {
     withdrawConsent,
     updateConsent,
     acceptCategory,
-    acceptAllCategories
+    acceptAllCategories,
+    acceptPreselectedCategories,
+    declineAllCategories,
+    declineCategory
   }
 }
