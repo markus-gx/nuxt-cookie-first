@@ -39,7 +39,7 @@ export default defineNuxtModule<ModuleOptions>({
       global: true,
       pathPrefix: false
     })
-    console.info('[🚀]nuxt-swell launched successfully.')
+    console.info('[🚀]nuxt-cookie-first launched successfully.')
   }
 })
 const concatAndEncodeURLParams = (params: {[key: string]: any}) => {
