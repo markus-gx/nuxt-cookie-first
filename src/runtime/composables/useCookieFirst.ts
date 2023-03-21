@@ -1,15 +1,12 @@
-import {CookieFirst} from "../../types/CookieFirst";
-import {NuxtCookieFirst} from "../../types/NuxtCookieFirst";
 import {useState} from "#app";
 import {watchEffect, computed} from "vue";
-import {CookieFirstCategoryEvent} from "../../types/CookieFirstCategoryEvent";
-import {CookieFirstServicesEvent} from "../../types/CookieFirstServicesEvent";
-import {
-  CookieFirstCategories,
-  CookieFirstCategoriesType
-} from "../../types/CookieFirstCategories";
-import {CookieFirstServices} from "../../types/CookieFirstServices";
-import {CookieFirstPanelTabs} from "../../types/CookieFirstPanelTabs";
+import {NuxtCookieFirst} from "../types/NuxtCookieFirst";
+import {CookieFirst} from "../types/CookieFirst";
+import {CookieFirstCategories, CookieFirstCategoriesType} from "../types/CookieFirstCategories";
+import {CookieFirstServices} from "../types/CookieFirstServices";
+import {CookieFirstCategoryEvent} from "../types/CookieFirstCategoryEvent";
+import {CookieFirstServicesEvent} from "../types/CookieFirstServicesEvent";
+import {CookieFirstPanelTabs} from "../types/CookieFirstPanelTabs";
 export default function (): NuxtCookieFirst {
   const cookieFirst = useState<CookieFirst | null>('cookie-first', () => null)
   const cookieFirstCategories = useState<CookieFirstCategories | null>('cookie-first-categories', () => null)

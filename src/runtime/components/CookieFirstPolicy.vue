@@ -9,6 +9,7 @@
 
 <script setup lang="ts">
 import useCookieFirst from "../composables/useCookieFirst";
+
 const {renderEmbeds} = useCookieFirst()
 renderEmbeds()
 </script>
