@@ -110,6 +110,18 @@ export default function (): NuxtCookieFirst {
     }
   }
 
+  const acceptService = (service: string | string[]) => {
+    if(cookieFirst.value){
+      cookieFirst.value.acceptService(service)
+    }
+  }
+
+  const declineService = (service: string | string[]) => {
+    if(cookieFirst.value){
+      cookieFirst.value.declineService(service)
+    }
+  }
+
   return {
     init,
     cookieFirst: computed(() => cookieFirst.value),
@@ -123,6 +135,8 @@ export default function (): NuxtCookieFirst {
     acceptAllCategories,
     acceptPreselectedCategories,
     declineAllCategories,
-    declineCategory
+    declineCategory,
+    acceptService,
+    declineService
   }
 }

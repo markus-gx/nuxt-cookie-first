@@ -69,4 +69,16 @@ export interface NuxtCookieFirst{
    * @param category
    */
   declineCategory: (category: CookieFirstCategoriesType) => void;
+  /**
+   * This function allows you to accept specified services by their unique identifier.
+   * If consent policy option is set to "category-based" and not "service-based", the function will accept all categories of which this service is part.
+   * @param service
+   */
+  acceptService: (service: string | string[]) => void;
+  /**
+   * This function allows you to decline one or multiple services and preserve the rest of the consent as it was previously saved.
+   * If consent policy option is set to "category-based" and not "service-based", the function will decline all categories of which this service is part.
+   * @param service
+   */
+  declineService: (service: string | string[]) => void;
 }
