@@ -31,8 +31,9 @@ export default function (): NuxtCookieFirst {
     watchEffect(() =>  {
       if(cookieFirst.value){
         cb(cookieFirst.value)
+        cookieFirstCategories.value = cookieFirst.value?.consent
+        cookieFirstServices.value = cookieFirst.value?.acceptedServices
       }
-      //TODO initialize consent categoreis and services change state
     })
   }
 
@@ -43,7 +44,14 @@ export default function (): NuxtCookieFirst {
       }
     })
   }
-  //TODO add onServiceChange
+
+  const onConsentServiceChange = (cb: (services: CookieFirstServices) => void) => {
+    watchEffect(() => {
+      if(cookieFirstServices.value){
+        cb(cookieFirstServices.value)
+      }
+    })
+  }
 
   const openPanel = (tab?: CookieFirstPanelTabs) => {
     if(cookieFirst.value){
@@ -61,6 +69,7 @@ export default function (): NuxtCookieFirst {
     init,
     cookieFirst: computed(() => cookieFirst.value),
     onConsentCategoryChange,
+    onConsentServiceChange,
     openPanel,
     closePanel
   }
