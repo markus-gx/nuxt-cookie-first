@@ -81,4 +81,9 @@ export interface NuxtCookieFirst{
    * @param service
    */
   declineService: (service: string | string[]) => void;
+  /**
+   * This function allows you to change the language of the Cookie Preference Center.
+   * @param language - 2-letter ISO 639-1 language code e.g 'en'
+   */
+  changeLanguage: (language: string) => void;
 }

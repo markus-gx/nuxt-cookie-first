@@ -122,6 +122,12 @@ export default function (): NuxtCookieFirst {
     }
   }
 
+  const changeLanguage = (language: string) => {
+    if(cookieFirst.value){
+      cookieFirst.value.changeLanguage(language)
+    }
+  }
+
   return {
     init,
     cookieFirst: computed(() => cookieFirst.value),
@@ -137,6 +143,7 @@ export default function (): NuxtCookieFirst {
     declineAllCategories,
     declineCategory,
     acceptService,
-    declineService
+    declineService,
+    changeLanguage
   }
 }

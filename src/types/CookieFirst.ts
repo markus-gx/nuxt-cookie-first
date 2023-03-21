@@ -16,4 +16,5 @@ export interface CookieFirst{
   declineCategory: (category: CookieFirstCategoriesType) => void;
   acceptService: (service: string | string[]) => void;
   declineService: (service: string | string[]) => void;
+  changeLanguage: (language: string) => void;
  }
