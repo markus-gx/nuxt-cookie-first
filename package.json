@@ -2,9 +2,13 @@
   "name": "nuxt-cookie-first",
   "version": "0.1.0",
   "description": "Nuxt Cookie First provides and easy configurable integration with Cookie First.",
-  "repository": "your-org/nuxt-cookie-first",
+  "repository": "markus-gx/nuxt-cookie-first",
   "license": "MIT",
   "type": "module",
+  "author": {
+    "name": "Markus Geilehner",
+    "email": "markus@geilehner.io"
+  },
   "exports": {
     ".": {
       "types": "./dist/types.d.ts",
