@@ -4,7 +4,10 @@ import {useState} from "#app";
 import {watchEffect, computed} from "vue";
 import {CookieFirstCategoryEvent} from "../../types/CookieFirstCategoryEvent";
 import {CookieFirstServicesEvent} from "../../types/CookieFirstServicesEvent";
-import {CookieFirstCategories} from "../../types/CookieFirstCategories";
+import {
+  CookieFirstCategories,
+  CookieFirstCategoriesType
+} from "../../types/CookieFirstCategories";
 import {CookieFirstServices} from "../../types/CookieFirstServices";
 import {CookieFirstPanelTabs} from "../../types/CookieFirstPanelTabs";
 export default function (): NuxtCookieFirst {
@@ -65,12 +68,40 @@ export default function (): NuxtCookieFirst {
     }
   }
 
+  const withdrawConsent = () => {
+    if(cookieFirst.value){
+      cookieFirst.value.withdrawConsent()
+    }
+  }
+
+  const updateConsent = (categories: CookieFirstCategories) => {
+    if(cookieFirst.value){
+      cookieFirst.value.updateConsent(categories)
+    }
+  }
+
+  const acceptCategory = (category: CookieFirstCategoriesType) => {
+    if(cookieFirst.value){
+      cookieFirst.value.acceptCategory(category)
+    }
+  }
+
+  const acceptAllCategories = () => {
+    if(cookieFirst.value){
+      cookieFirst.value.acceptAllCategories()
+    }
+  }
+
   return {
     init,
     cookieFirst: computed(() => cookieFirst.value),
     onConsentCategoryChange,
     onConsentServiceChange,
     openPanel,
-    closePanel
+    closePanel,
+    withdrawConsent,
+    updateConsent,
+    acceptCategory,
+    acceptAllCategories
   }
 }

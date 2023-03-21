@@ -4,3 +4,5 @@ export interface CookieFirstCategories{
   necessary: boolean,
   performance: boolean
 }
+
+export type CookieFirstCategoriesType = 'advertising' | 'functional' | 'necessary' | 'performance'

@@ -1,6 +1,6 @@
 import {CookieFirst} from "./CookieFirst";
 import {ComputedRef} from "vue";
-import {CookieFirstCategories} from "./CookieFirstCategories";
+import {CookieFirstCategories, CookieFirstCategoriesType} from "./CookieFirstCategories";
 import {CookieFirstPanelTabs} from "./CookieFirstPanelTabs";
 import {CookieFirstServices} from "./CookieFirstServices";
 
@@ -34,4 +34,24 @@ export interface NuxtCookieFirst{
    * Closes the Cookie Preference Center if currently open.
    */
   closePanel: () => void;
+  /**
+   * Consent withdraw function will clear the visitor's consent and log such change in our consent log.
+   * After this action is performed, website will reload to allow visitor's to have a fresh start on a domain.
+   * Banner will be shown again and no methods changing consent will be available until visitor consents again.
+   */
+  withdrawConsent: () => void;
+  /**
+   * Update visitors consent categories and set it to the given value.
+   * @param categories
+   */
+  updateConsent: (categories: CookieFirstCategories) => void;
+  /**
+   * Accept a single consent category
+   * @param category
+   */
+  acceptCategory:(category: CookieFirstCategoriesType) => void;
+  /**
+   * Accept all consent categories
+   */
+  acceptAllCategories: () => void;
 }
