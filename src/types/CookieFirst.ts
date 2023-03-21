@@ -17,4 +17,5 @@ export interface CookieFirst{
   acceptService: (service: string | string[]) => void;
   declineService: (service: string | string[]) => void;
   changeLanguage: (language: string) => void;
+  renderEmbeds(): void;
  }

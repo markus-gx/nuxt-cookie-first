@@ -11,6 +11,8 @@
         Change lang to en and open panel
       </button>
     </div>
+    <CookieFirstPolicy />
+    <CookieFirstTable />
   </div>
 </template>
 

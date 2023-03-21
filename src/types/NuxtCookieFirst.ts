@@ -86,4 +86,8 @@ export interface NuxtCookieFirst{
    * @param language - 2-letter ISO 639-1 language code e.g 'en'
    */
   changeLanguage: (language: string) => void;
+  /**
+   * This function allows you to render all embeds on the page.
+   */
+  renderEmbeds: () => void;
 }

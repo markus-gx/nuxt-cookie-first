@@ -1,4 +1,4 @@
-import {defineNuxtModule, createResolver, addImportsDir} from '@nuxt/kit'
+import {defineNuxtModule, createResolver, addImportsDir, addComponentsDir} from '@nuxt/kit'
 import {Nuxt} from "@nuxt/schema";
 
 // Module options TypeScript interface definition
@@ -34,6 +34,11 @@ export default defineNuxtModule<ModuleOptions>({
     })
 
     addImportsDir(resolver.resolve('./runtime/composables'))
+    addComponentsDir({
+      path: resolver.resolve('./runtime/components'),
+      global: true,
+      pathPrefix: false
+    })
     console.info('[🚀]nuxt-swell launched successfully.')
   }
 })

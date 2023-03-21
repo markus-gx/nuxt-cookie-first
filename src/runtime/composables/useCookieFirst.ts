@@ -128,6 +128,12 @@ export default function (): NuxtCookieFirst {
     }
   }
 
+  const renderEmbeds = () => {
+    if(cookieFirst.value){
+      cookieFirst.value.renderEmbeds()
+    }
+  }
+
   return {
     init,
     cookieFirst: computed(() => cookieFirst.value),
@@ -144,6 +150,7 @@ export default function (): NuxtCookieFirst {
     declineCategory,
     acceptService,
     declineService,
-    changeLanguage
+    changeLanguage,
+    renderEmbeds
   }
 }
