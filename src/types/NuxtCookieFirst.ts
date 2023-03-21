@@ -14,6 +14,8 @@ export interface NuxtCookieFirst{
    * The CookieFirst object
    */
   cookieFirst: ComputedRef<CookieFirst | null>;
+  categories: ComputedRef<CookieFirstCategories | null>;
+  services: ComputedRef<CookieFirstServices | null>;
   /**
    * Is triggered when the consent categories change
    * @param cb

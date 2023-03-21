@@ -137,6 +137,8 @@ export default function (): NuxtCookieFirst {
   return {
     init,
     cookieFirst: computed(() => cookieFirst.value),
+    categories: computed(() => cookieFirstCategories.value),
+    services: computed(() => cookieFirstServices.value),
     onConsentCategoryChange,
     onConsentServiceChange,
     openPanel,
