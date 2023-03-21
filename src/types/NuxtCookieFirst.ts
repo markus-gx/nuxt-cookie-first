@@ -20,4 +20,5 @@ export interface NuxtCookieFirst{
    * @param tab The tab to open. If not provided, the last opened tab will be used.
    */
   openPanel: (tab?: CookieFirstPanelTabs) => void;
+  closePanel: () => void;
 }

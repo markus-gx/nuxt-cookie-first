@@ -51,10 +51,17 @@ export default function (): NuxtCookieFirst {
     }
   }
 
+  const closePanel = () => {
+    if(cookieFirst.value){
+      cookieFirst.value.closePanel()
+    }
+  }
+
   return {
     init,
     cookieFirst: computed(() => cookieFirst.value),
     onConsentCategoryChange,
-    openPanel
+    openPanel,
+    closePanel
   }
 }
