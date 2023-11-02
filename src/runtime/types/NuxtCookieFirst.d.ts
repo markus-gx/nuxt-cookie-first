@@ -26,6 +26,7 @@ export interface NuxtCookieFirst{
    * @param cb
    */
   onConsentServiceChange: (cb: (services: CookieFirstServices) => void) => void;
+  onLayerReady: (cb: (layer: HTMLElement) => void) => void;
 
   /**
    * Opens the Cookie Preference Center if not currently open.

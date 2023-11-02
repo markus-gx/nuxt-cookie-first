@@ -1,16 +1,18 @@
 import {useState} from "#app";
 import {watchEffect, computed} from "vue";
-import {NuxtCookieFirst} from "../types/NuxtCookieFirst";
-import {CookieFirst} from "../types/CookieFirst";
-import {CookieFirstCategories, CookieFirstCategoriesType} from "../types/CookieFirstCategories";
-import {CookieFirstServices} from "../types/CookieFirstServices";
-import {CookieFirstCategoryEvent} from "../types/CookieFirstCategoryEvent";
-import {CookieFirstServicesEvent} from "../types/CookieFirstServicesEvent";
-import {CookieFirstPanelTabs} from "../types/CookieFirstPanelTabs";
+import type {NuxtCookieFirst} from "../types/NuxtCookieFirst";
+import type {CookieFirst} from "../types/CookieFirst";
+import type {CookieFirstCategories, CookieFirstCategoriesType} from "../types/CookieFirstCategories";
+import type {CookieFirstServices} from "../types/CookieFirstServices";
+import type {CookieFirstCategoryEvent} from "../types/CookieFirstCategoryEvent";
+import type {CookieFirstServicesEvent} from "../types/CookieFirstServicesEvent";
+import type {CookieFirstPanelTabs} from "../types/CookieFirstPanelTabs";
+import type {CookieFirstLayerReadyEvent} from "../types/CookieFirstLayerReadyEvent";
 export default function (): NuxtCookieFirst {
   const cookieFirst = useState<CookieFirst | null>('cookie-first', () => null)
   const cookieFirstCategories = useState<CookieFirstCategories | null>('cookie-first-categories', () => null)
   const cookieFirstServices = useState<CookieFirstServices | null>('cookie-first-services', () => null)
+  const cookieFirstLayer = useState<HTMLElement | null>('cookie-first-layer', () => null)
   //const acceptedCategories
   if(process.client){
     window.addEventListener('cf_init', () => {
@@ -24,6 +26,10 @@ export default function (): NuxtCookieFirst {
     window.addEventListener("cf_services_consent", (e: Event) => {
       const event = e as CookieFirstServicesEvent
       cookieFirstServices.value = event.detail
+    })
+    window.addEventListener("cf_layer_ready", (e: Event) => {
+      const event = e as CookieFirstLayerReadyEvent
+      cookieFirstLayer.value = event.detail
     })
   }
 
@@ -49,6 +55,14 @@ export default function (): NuxtCookieFirst {
     watchEffect(() => {
       if(cookieFirstServices.value){
         cb(cookieFirstServices.value)
+      }
+    })
+  }
+
+  const onLayerReady = (cb: (layer: HTMLElement) => void) => {
+    watchEffect(() => {
+      if(cookieFirstLayer.value){
+        cb(cookieFirstLayer.value)
       }
     })
   }
@@ -138,6 +152,7 @@ export default function (): NuxtCookieFirst {
     services: computed(() => cookieFirstServices.value),
     onConsentCategoryChange,
     onConsentServiceChange,
+    onLayerReady,
     openPanel,
     closePanel,
     withdrawConsent,

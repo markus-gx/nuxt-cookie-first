@@ -19,7 +19,7 @@
 <script setup>
 import useCookieFirst from "../src/runtime/composables/useCookieFirst";
 
-const {init, onConsentCategoryChange, openPanel, changeLanguage} = useCookieFirst()
+const {init, onConsentCategoryChange, openPanel, changeLanguage, onLayerReady} = useCookieFirst()
 
 init((cookieFirst) => {
   console.log("here in initiation", cookieFirst)
@@ -29,6 +29,9 @@ onConsentCategoryChange((categories) => {
   console.log("here in onConsentCategoryChange", categories)
 })
 
+onLayerReady((layer) => {
+  console.log("here in onLayerReady", layer)
+})
 const changeLang = () => {
   changeLanguage("en")
   openPanel()

@@ -55,6 +55,7 @@ export default defineNuxtConfig({
   cookieFirst: {
     // Options
     apiKey: 'YOUR_API_KEY',
+    resetTabIndex: false, //If the tabindex of the elements inside the cookie banner layer should be reset to 0
     stealthMode: false, //default false
     silentMode: false, //default false
     language: 'YOUR_DEFAULT_LANGUAGE', //default null
@@ -155,6 +156,22 @@ Is triggered when the consent services change.
 const {onConsentServiceChange} = useCookieFirst();
 onConsentServiceChange(services => {
   console.log('Consent services changed:', services);
+});
+</script>
+```
+
+#### `onLayerReady(cb: (layer: HTMLElement) => void)`
+
+Is triggered when the layer is visible/ready.
+
+**Example:**
+
+```vue
+
+<script setup>
+const {onLayerReady} = useCookieFirst();
+onLayerReady(layer => {
+  console.log('Layer ready:', layer);
 });
 </script>
 ```
