@@ -5,6 +5,9 @@
 [![License][license-src]][license-href]
 [![Nuxt][nuxt-src]][nuxt-href]
 
+![Nuxt Cookie First](banner.jpg)
+
+
 Nuxt Cookie First is a powerful and easy-to-use Nuxt.js module that seamlessly
 integrates [CookieFirst](https://cookiefirst.com/),
 a GDPR and CCPA compliant cookie consent solution, into your Nuxt.js application. This module enables developers to
