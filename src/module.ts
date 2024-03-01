@@ -20,7 +20,7 @@ export default defineNuxtModule<ModuleOptions>({
   },
   // Default configuration options of the Nuxt module
   defaults: {},
-  setup (options: ModuleOptions, nuxt: Nuxt) {
+  setup(options: ModuleOptions, nuxt: Nuxt) {
     const resolver = createResolver(import.meta.url)
     const runtimeDir = fileURLToPath(new URL('./runtime', import.meta.url))
 
@@ -46,11 +46,11 @@ export default defineNuxtModule<ModuleOptions>({
       global: true,
       pathPrefix: false
     })
-    addPlugin(resolve(runtimeDir,'plugin'))
+    addPlugin(resolve(runtimeDir, 'plugin'))
 
   }
 })
-const concatAndEncodeURLParams = (params: {[key: string]: any}) => {
+const concatAndEncodeURLParams = (params: { [key: string]: any }) => {
   return Object.keys(params).filter(key => params[key]).map(key => {
     return encodeURIComponent(key) + '=' + encodeURIComponent(String(params[key]))
   }).join('&')
