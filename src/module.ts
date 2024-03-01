@@ -24,16 +24,18 @@ export default defineNuxtModule<ModuleOptions>({
     const resolver = createResolver(import.meta.url)
     const runtimeDir = fileURLToPath(new URL('./runtime', import.meta.url))
 
-    if (!options.apiKey) {
+    nuxt.options.runtimeConfig.public.cookieFirst = defu(nuxt.options.runtimeConfig.public.cookieFirst, options)
+
+    if (!nuxt.options.runtimeConfig.public.cookieFirst.apiKey) {
       throw new Error('[nuxt-cookie-first] Please provide a valid API Key.')
     }
 
     nuxt.options.app.head.script?.push({
       src: 'https://consent.cookiefirst.com/banner.js?' + concatAndEncodeURLParams({
-        'cookiefirst-key': options.apiKey,
-        'stealth-mode': options.stealthMode,
-        'silent-mode': options.silentMode,
-        'language': options.language
+        'cookiefirst-key': nuxt.options.runtimeConfig.public.cookieFirst.apiKey,
+        'stealth-mode': nuxt.options.runtimeConfig.public.cookieFirst.stealthMode,
+        'silent-mode': nuxt.options.runtimeConfig.public.cookieFirst.silentMode,
+        'language': nuxt.options.runtimeConfig.public.cookieFirst.language
       }),
       async: true
     })
@@ -43,9 +45,6 @@ export default defineNuxtModule<ModuleOptions>({
       path: resolver.resolve(runtimeDir, 'components'),
       global: true,
       pathPrefix: false
-    })
-    nuxt.options.runtimeConfig.public.cookieFirst = defu(nuxt.options.runtimeConfig.public.cookieFirst, {
-      resetTabIndex: options.resetTabIndex
     })
     addPlugin(resolve(runtimeDir,'plugin'))
 
