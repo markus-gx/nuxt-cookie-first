@@ -18,6 +18,8 @@ export default function (): NuxtCookieFirst {
     window.addEventListener('cf_init', () => {
       // @ts-ignore
       cookieFirst.value = window?.CookieFirst
+      cookieFirstServices.value = cookieFirst.value?.acceptedServices
+      cookieFirstCategories.value = cookieFirst.value?.consent
     })
     window.addEventListener("cf_consent", (e: Event) => {
       const event = e as CookieFirstCategoryEvent
