@@ -3,6 +3,7 @@ import type {Nuxt} from "@nuxt/schema";
 import defu from "defu";
 import {resolve} from "path";
 import {fileURLToPath} from "url";
+import {addCustomTab} from "@nuxt/devtools-kit";
 
 // Module options TypeScript interface definition
 export interface ModuleOptions {
@@ -33,6 +34,14 @@ export default defineNuxtModule<ModuleOptions>({
       pathPrefix: false
     })
     addPlugin(resolve(runtimeDir, 'plugin.client'))
-
+    addCustomTab({
+      name: 'cookie-first',
+      title: 'CookieFirst',
+      icon: 'material-symbols:cookie',
+      view: {
+        type: 'iframe',
+        src: '/',
+      }
+    })
   }
 })
