@@ -1,6 +1,10 @@
 # Changelog
 
 
+## v0.1.8
+
+[compare changes](https://github.com/markus-gx/nuxt-cookie-first/compare/v0.1.7...v0.1.8)
+
 ## v0.1.3
 
 [compare changes](https://github.com/markus-gx/nuxt-cookie-first/compare/v0.1.2...v0.1.3)
