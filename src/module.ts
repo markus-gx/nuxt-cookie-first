@@ -12,6 +12,7 @@ export interface ModuleOptions {
   silentMode?: boolean
   language?: string // 2-letter ISO 639-1 code
   resetTabIndex?: boolean
+  useEuropeanCDN?: boolean
 }
 
 export default defineNuxtModule<ModuleOptions>({
@@ -20,7 +21,9 @@ export default defineNuxtModule<ModuleOptions>({
     configKey: 'cookieFirst',
   },
   // Default configuration options of the Nuxt module
-  defaults: {},
+  defaults: {
+    useEuropeanCDN: true,
+  },
   setup(options: ModuleOptions, nuxt: Nuxt) {
     const resolver = createResolver(import.meta.url)
     const runtimeDir = fileURLToPath(new URL('./runtime', import.meta.url))
