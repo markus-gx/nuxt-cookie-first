@@ -2,7 +2,7 @@ export default defineAppConfig({
   docus: {
     title: 'Nuxt CookieFirst',
     description: 'Nuxt Cookie First is a powerful and easy-to-use Nuxt.js module that seamlessly integrates CookieFirst, a GDPR and CCPA compliant cookie consent solution, into your Nuxt.js application. This module enables developers to manage cookies and user consent with minimal effort while providing an optimal user experience.',
-    image: 'banner.jpg',
+    image: '/banner.jpg',
     socials: {
       github: 'https://github.com/markus-gx/nuxt-cookie-first',
       nuxt: {
