@@ -1,5 +1,5 @@
-import {CookieFirstServices} from "./CookieFirstServices";
+import type { CookieFirstServices } from './CookieFirstServices'
 
-export interface CookieFirstServicesEvent extends Event{
+export interface CookieFirstServicesEvent extends Event {
   detail: CookieFirstServices
 }

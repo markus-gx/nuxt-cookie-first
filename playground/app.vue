@@ -17,23 +17,23 @@
 </template>
 
 <script setup>
-import useCookieFirst from "../src/runtime/composables/useCookieFirst";
+import useCookieFirst from '../src/runtime/composables/useCookieFirst'
 
-const {init, onConsentCategoryChange, openPanel, changeLanguage, onLayerReady} = useCookieFirst()
+const { init, onConsentCategoryChange, openPanel, changeLanguage, onLayerReady } = useCookieFirst()
 
 init((cookieFirst) => {
-  console.log("here in initiation", cookieFirst)
+  console.log('here in initiation', cookieFirst)
 })
 
 onConsentCategoryChange((categories) => {
-  console.log("here in onConsentCategoryChange", categories)
+  console.log('here in onConsentCategoryChange', categories)
 })
 
 onLayerReady((layer) => {
-  console.log("here in onLayerReady", layer)
+  console.log('here in onLayerReady', layer)
 })
 const changeLang = () => {
-  changeLanguage("en")
+  changeLanguage('en')
   openPanel()
 }
 </script>

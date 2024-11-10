@@ -8,8 +8,8 @@
 </template>
 
 <script setup lang="ts">
-import useCookieFirst from "../composables/useCookieFirst";
+import useCookieFirst from '../composables/useCookieFirst'
 
-const {renderEmbeds} = useCookieFirst()
+const { renderEmbeds } = useCookieFirst()
 renderEmbeds()
 </script>

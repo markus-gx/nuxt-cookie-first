@@ -1,3 +1,3 @@
-export interface CookieFirstLayerReadyEvent extends Event{
+export interface CookieFirstLayerReadyEvent extends Event {
   detail: HTMLElement
 }

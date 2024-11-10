@@ -1,2 +1,2 @@
-//Generate enum
-export type CookieFirstPanelTabs = "settings" | "cookie" | "policy"
+// Generate enum
+export type CookieFirstPanelTabs = 'settings' | 'cookie' | 'policy'

@@ -8,30 +8,30 @@ export default defineAppConfig({
       nuxt: {
         label: 'Nuxt',
         icon: 'simple-icons:nuxtdotjs',
-        href: 'https://nuxt.com'
-      }
+        href: 'https://nuxt.com',
+      },
     },
     github: {
       dir: '',
       branch: 'main',
       repo: 'nuxt-cookie-first',
       owner: 'markus-gx',
-      edit: true
+      edit: true,
     },
     aside: {
       level: 0,
       collapsed: false,
-      exclude: []
+      exclude: [],
     },
     main: {
       padded: true,
-      fluid: true
+      fluid: true,
     },
     header: {
       logo: false,
       showLinkIcon: true,
       exclude: [],
-      fluid: true
-    }
-  }
+      fluid: true,
+    },
+  },
 })

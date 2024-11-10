@@ -1,23 +1,23 @@
-import {defineNuxtModule, createResolver, addImportsDir, addComponentsDir, addPlugin} from '@nuxt/kit'
-import type {Nuxt} from "@nuxt/schema";
-import defu from "defu";
-import {resolve} from "path";
-import {fileURLToPath} from "url";
-import {addCustomTab} from "@nuxt/devtools-kit";
+import { resolve } from 'node:path'
+import { fileURLToPath } from 'node:url'
+import { defineNuxtModule, createResolver, addImportsDir, addComponentsDir, addPlugin } from '@nuxt/kit'
+import type { Nuxt } from '@nuxt/schema'
+import defu from 'defu'
+import { addCustomTab } from '@nuxt/devtools-kit'
 
 // Module options TypeScript interface definition
 export interface ModuleOptions {
   apiKey?: string
-  stealthMode?: boolean,
+  stealthMode?: boolean
   silentMode?: boolean
-  language?: string, // 2-letter ISO 639-1 code
+  language?: string // 2-letter ISO 639-1 code
   resetTabIndex?: boolean
 }
 
 export default defineNuxtModule<ModuleOptions>({
   meta: {
     name: 'nuxt-cookie-first',
-    configKey: 'cookieFirst'
+    configKey: 'cookieFirst',
   },
   // Default configuration options of the Nuxt module
   defaults: {},
@@ -31,7 +31,7 @@ export default defineNuxtModule<ModuleOptions>({
     addComponentsDir({
       path: resolver.resolve(runtimeDir, 'components'),
       global: true,
-      pathPrefix: false
+      pathPrefix: false,
     })
     addPlugin(resolve(runtimeDir, 'plugin.client'))
     addCustomTab({
@@ -41,7 +41,7 @@ export default defineNuxtModule<ModuleOptions>({
       view: {
         type: 'iframe',
         src: '/',
-      }
+      },
     })
-  }
+  },
 })

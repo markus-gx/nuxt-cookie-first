@@ -1,8 +1,8 @@
-import { defineNuxtPlugin, useHead, useRuntimeConfig } from '#imports';
-import useCookieFirst from "./composables/useCookieFirst";
+import useCookieFirst from './composables/useCookieFirst'
+import { defineNuxtPlugin, useHead, useRuntimeConfig } from '#imports'
 
-const concatAndEncodeURLParams = (params: { [key: string]: any }) => {
-  return Object.keys(params).filter(key => params[key]).map(key => {
+const concatAndEncodeURLParams = (params: { [key: string]: unknown }) => {
+  return Object.keys(params).filter(key => params[key]).map((key) => {
     return encodeURIComponent(key) + '=' + encodeURIComponent(String(params[key]))
   }).join('&')
 }
@@ -15,10 +15,10 @@ export default defineNuxtPlugin(() => {
         stealthMode,
         silentMode,
         language,
-        resetTabIndex
-      }
-    }
-  } = useRuntimeConfig();
+        resetTabIndex,
+      },
+    },
+  } = useRuntimeConfig()
 
   if (apiKey) {
     useHead({
@@ -28,23 +28,23 @@ export default defineNuxtPlugin(() => {
             'cookiefirst-key': apiKey,
             'stealth-mode': stealthMode,
             'silent-mode': silentMode,
-            'language': language
+            'language': language,
           }),
-          async: true
-        }
-      ]
+          async: true,
+        },
+      ],
     })
   }
 
-  if(resetTabIndex) {
-    const {onLayerReady} = useCookieFirst()
+  if (resetTabIndex) {
+    const { onLayerReady } = useCookieFirst()
 
     onLayerReady((layer) => {
-      const elements = layer.querySelectorAll('.cookiefirst-root *');
+      const elements = layer.querySelectorAll('.cookiefirst-root *')
 
       for (let i = 0; i < elements.length; i++) {
-        if(elements[i].attributes.getNamedItem("tabindex")){
-          elements[i].attributes.getNamedItem("tabindex")!.value = "0"
+        if (elements[i].attributes.getNamedItem('tabindex')) {
+          elements[i].attributes.getNamedItem('tabindex')!.value = '0'
         }
       }
     })

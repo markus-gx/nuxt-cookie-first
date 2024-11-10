@@ -1,43 +1,43 @@
-import {useState} from "#app";
-import {watchEffect, computed} from "vue";
-import type {NuxtCookieFirst} from "../types/NuxtCookieFirst";
-import type {CookieFirst} from "../types/CookieFirst";
-import type {CookieFirstCategories, CookieFirstCategoriesType} from "../types/CookieFirstCategories";
-import type {CookieFirstServices} from "../types/CookieFirstServices";
-import type {CookieFirstCategoryEvent} from "../types/CookieFirstCategoryEvent";
-import type {CookieFirstServicesEvent} from "../types/CookieFirstServicesEvent";
-import type {CookieFirstPanelTabs} from "../types/CookieFirstPanelTabs";
-import type {CookieFirstLayerReadyEvent} from "../types/CookieFirstLayerReadyEvent";
+import { watchEffect, computed } from 'vue'
+import type { NuxtCookieFirst } from '../types/NuxtCookieFirst'
+import type { CookieFirst } from '../types/CookieFirst'
+import type { CookieFirstCategories, CookieFirstCategoriesType } from '../types/CookieFirstCategories'
+import type { CookieFirstServices } from '../types/CookieFirstServices'
+import type { CookieFirstCategoryEvent } from '../types/CookieFirstCategoryEvent'
+import type { CookieFirstServicesEvent } from '../types/CookieFirstServicesEvent'
+import type { CookieFirstPanelTabs } from '../types/CookieFirstPanelTabs'
+import type { CookieFirstLayerReadyEvent } from '../types/CookieFirstLayerReadyEvent'
+import { useState } from '#app'
+
 export default function (): NuxtCookieFirst {
   const cookieFirst = useState<CookieFirst | null>('cookie-first', () => null)
   const cookieFirstCategories = useState<CookieFirstCategories | null>('cookie-first-categories', () => null)
   const cookieFirstServices = useState<CookieFirstServices | null>('cookie-first-services', () => null)
   const cookieFirstLayer = useState<HTMLElement | null>('cookie-first-layer', () => null)
-  //const acceptedCategories
-  if(process.client){
+  // const acceptedCategories
+  if (import.meta.client) {
     window.addEventListener('cf_init', () => {
-      // @ts-ignore
       cookieFirst.value = window?.CookieFirst
       cookieFirstServices.value = cookieFirst.value?.acceptedServices
       cookieFirstCategories.value = cookieFirst.value?.consent
     })
-    window.addEventListener("cf_consent", (e: Event) => {
+    window.addEventListener('cf_consent', (e: Event) => {
       const event = e as CookieFirstCategoryEvent
       cookieFirstCategories.value = event.detail
     })
-    window.addEventListener("cf_services_consent", (e: Event) => {
+    window.addEventListener('cf_services_consent', (e: Event) => {
       const event = e as CookieFirstServicesEvent
       cookieFirstServices.value = event.detail
     })
-    window.addEventListener("cf_layer_ready", (e: Event) => {
+    window.addEventListener('cf_layer_ready', (e: Event) => {
       const event = e as CookieFirstLayerReadyEvent
       cookieFirstLayer.value = event.detail
     })
   }
 
   const init = (cb: (cookieFirst: CookieFirst) => void) => {
-    watchEffect(() =>  {
-      if(cookieFirst.value){
+    watchEffect(() => {
+      if (cookieFirst.value) {
         cb(cookieFirst.value)
         cookieFirstCategories.value = cookieFirst.value?.consent
         cookieFirstServices.value = cookieFirst.value?.acceptedServices
@@ -47,7 +47,7 @@ export default function (): NuxtCookieFirst {
 
   const onConsentCategoryChange = (cb: (categories: CookieFirstCategories) => void) => {
     watchEffect(() => {
-      if(cookieFirstCategories.value){
+      if (cookieFirstCategories.value) {
         cb(cookieFirstCategories.value)
       }
     })
@@ -55,7 +55,7 @@ export default function (): NuxtCookieFirst {
 
   const onConsentServiceChange = (cb: (services: CookieFirstServices) => void) => {
     watchEffect(() => {
-      if(cookieFirstServices.value){
+      if (cookieFirstServices.value) {
         cb(cookieFirstServices.value)
       }
     })
@@ -63,86 +63,86 @@ export default function (): NuxtCookieFirst {
 
   const onLayerReady = (cb: (layer: HTMLElement) => void) => {
     watchEffect(() => {
-      if(cookieFirstLayer.value){
+      if (cookieFirstLayer.value) {
         cb(cookieFirstLayer.value)
       }
     })
   }
 
   const openPanel = (tab?: CookieFirstPanelTabs) => {
-    if(cookieFirst.value){
+    if (cookieFirst.value) {
       cookieFirst.value.openPanel(tab)
     }
   }
 
   const closePanel = () => {
-    if(cookieFirst.value){
+    if (cookieFirst.value) {
       cookieFirst.value.closePanel()
     }
   }
 
   const withdrawConsent = () => {
-    if(cookieFirst.value){
+    if (cookieFirst.value) {
       cookieFirst.value.withdrawConsent()
     }
   }
 
   const updateConsent = (categories: CookieFirstCategories) => {
-    if(cookieFirst.value){
+    if (cookieFirst.value) {
       cookieFirst.value.updateConsent(categories)
     }
   }
 
   const acceptCategory = (category: CookieFirstCategoriesType) => {
-    if(cookieFirst.value){
+    if (cookieFirst.value) {
       cookieFirst.value.acceptCategory(category)
     }
   }
 
   const acceptAllCategories = () => {
-    if(cookieFirst.value){
+    if (cookieFirst.value) {
       cookieFirst.value.acceptAllCategories()
     }
   }
 
   const acceptPreselectedCategories = () => {
-    if(cookieFirst.value){
+    if (cookieFirst.value) {
       cookieFirst.value.acceptPreselectedCategories()
     }
   }
 
   const declineAllCategories = () => {
-    if(cookieFirst.value){
+    if (cookieFirst.value) {
       cookieFirst.value.declineAllCategories()
     }
   }
 
   const declineCategory = (category: CookieFirstCategoriesType) => {
-    if(cookieFirst.value){
+    if (cookieFirst.value) {
       cookieFirst.value.declineCategory(category)
     }
   }
 
   const acceptService = (service: string | string[]) => {
-    if(cookieFirst.value){
+    if (cookieFirst.value) {
       cookieFirst.value.acceptService(service)
     }
   }
 
   const declineService = (service: string | string[]) => {
-    if(cookieFirst.value){
+    if (cookieFirst.value) {
       cookieFirst.value.declineService(service)
     }
   }
 
   const changeLanguage = (language: string) => {
-    if(cookieFirst.value){
+    if (cookieFirst.value) {
       cookieFirst.value.changeLanguage(language)
     }
   }
 
   const renderEmbeds = () => {
-    if(cookieFirst.value){
+    if (cookieFirst.value) {
       cookieFirst.value.renderEmbeds()
     }
   }
@@ -167,6 +167,6 @@ export default function (): NuxtCookieFirst {
     acceptService,
     declineService,
     changeLanguage,
-    renderEmbeds
+    renderEmbeds,
   }
 }

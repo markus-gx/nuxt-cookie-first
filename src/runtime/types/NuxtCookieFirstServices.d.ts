@@ -1,4 +1,4 @@
-export interface NuxtCookieFirstServices{
-  cookiefirst: boolean,
+export interface NuxtCookieFirstServices {
+  cookiefirst: boolean
   [key: string]: boolean
 }

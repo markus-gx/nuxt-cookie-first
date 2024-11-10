@@ -1,7 +1,7 @@
-export interface CookieFirstCategories{
-  advertising: boolean,
-  functional: boolean,
-  necessary: boolean,
+export interface CookieFirstCategories {
+  advertising: boolean
+  functional: boolean
+  necessary: boolean
   performance: boolean
 }
 
