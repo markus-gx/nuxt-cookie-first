@@ -48,6 +48,7 @@ export default defineNuxtConfig({
     stealthMode: false, //default false
     silentMode: false, //default false
     language: 'YOUR_DEFAULT_LANGUAGE', //default null
+    useEuropeanCDN: true //default true - If the European CDN should be used
   }
 })
 ```

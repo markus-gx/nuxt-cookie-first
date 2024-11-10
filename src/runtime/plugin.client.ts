@@ -16,15 +16,19 @@ export default defineNuxtPlugin(() => {
         silentMode,
         language,
         resetTabIndex,
+        useEuropeanCDN,
       },
     },
   } = useRuntimeConfig()
 
   if (apiKey) {
+    const URL = useEuropeanCDN
+      ? 'https://consent-eu.cookiefirst.com/banner.js?'
+      : 'https://consent.cookiefirst.com/banner.js?'
     useHead({
       script: [
         {
-          src: 'https://consent.cookiefirst.com/banner.js?' + concatAndEncodeURLParams({
+          src: URL + concatAndEncodeURLParams({
             'cookiefirst-key': apiKey,
             'stealth-mode': stealthMode,
             'silent-mode': silentMode,
