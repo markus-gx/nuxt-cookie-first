@@ -23,8 +23,8 @@ export default defineNuxtPlugin(() => {
 
   if (apiKey) {
     const URL = useEuropeanCDN
-      ? 'https://consent-eu.cookiefirst.com/banner.js?'
-      : 'https://consent.cookiefirst.com/banner.js?'
+      ? 'https://consent-eu.cookiefirst.com/consent.js?'
+      : 'https://consent.cookiefirst.com/consent.js?'
     useHead({
       script: [
         {
