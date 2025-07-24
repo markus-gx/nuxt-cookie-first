@@ -12,6 +12,7 @@ export default defineNuxtPlugin(() => {
     public: {
       cookieFirst: {
         apiKey,
+        host,
         stealthMode,
         silentMode,
         language,
@@ -23,13 +24,12 @@ export default defineNuxtPlugin(() => {
 
   if (apiKey) {
     const URL = useEuropeanCDN
-      ? 'https://consent-eu.cookiefirst.com/banner.js?'
-      : 'https://consent.cookiefirst.com/banner.js?'
+      ? `https://consent-eu.cookiefirst.com/sites/${host}-${apiKey}/consent.js?`
+      : `https://consent.cookiefirst.com/sites/${host}-${apiKey}/consent.js?`
     useHead({
       script: [
         {
           src: URL + concatAndEncodeURLParams({
-            'cookiefirst-key': apiKey,
             'stealth-mode': stealthMode,
             'silent-mode': silentMode,
             'language': language,

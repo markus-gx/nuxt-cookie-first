@@ -8,6 +8,7 @@ import { addCustomTab } from '@nuxt/devtools-kit'
 // Module options TypeScript interface definition
 export interface ModuleOptions {
   apiKey?: string
+  host?: string
   stealthMode?: boolean
   silentMode?: boolean
   language?: string // 2-letter ISO 639-1 code
