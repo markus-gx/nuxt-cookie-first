@@ -6,6 +6,7 @@ export default defineNuxtConfig({
 
   cookieFirst: {
     apiKey: process.env.COOKIE_FIRST_API_KEY,
+    host: process.env.COOKIE_FIRST_HOST,
     stealthMode: false,
     silentMode: false,
     language: 'en',
