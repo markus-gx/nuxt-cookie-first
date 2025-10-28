@@ -49,6 +49,31 @@ export default defineNuxtConfig({
     silentMode: false, //default false
     language: 'YOUR_DEFAULT_LANGUAGE', //default null
     useEuropeanCDN: true //default true - If the European CDN should be used
+    //host: 'mydomain.at', //automatically detected if not set
+  }
+})
+```
+
+3. Multi-Domain Setup
+
+```js
+export default defineNuxtConfig({
+  modules: [
+    'nuxt-cookie-first'
+  ],
+  cookieFirst: {
+    sites: [
+      {
+        //... Options as in single domain setup (See above)
+        apiKey: 'YOUR_API_KEY',
+        host: 'mydomain.at' //required for multi-domain setup to resolve the correct configuration
+      },
+      {
+        //... Options as in single domain setup (See above)
+        apiKey: 'YOUR_API_KEY',
+        host: 'my-second-domain.com' //required for multi-domain setup to resolve the correct configuration
+      }
+    ]
   }
 })
 ```
