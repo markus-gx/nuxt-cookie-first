@@ -30,20 +30,21 @@
     "test:watch": "vitest watch"
   },
   "dependencies": {
-    "@nuxt/devtools-kit": "^2.6.2",
-    "@nuxt/kit": "^4.0.2",
+    "@nuxt/devtools-kit": "^3.0.0",
+    "@nuxt/kit": "^4.2.0",
     "defu": "^6.1.4"
   },
   "devDependencies": {
-    "@nuxt/eslint-config": "^1.7.1",
+    "@nuxt/eslint-config": "^1.9.0",
     "@nuxt/module-builder": "^1.0.2",
-    "@nuxt/schema": "^4.0.2",
-    "@nuxt/test-utils": "^3.19.2",
+    "@nuxt/schema": "^4.2.0",
+    "@nuxt/test-utils": "^3.20.1",
     "@nuxthq/studio": "^2.2.1",
     "changelogen": "^0.6.2",
-    "eslint": "^9.32.0",
-    "nuxt": "^4.0.2",
-    "vitest": "^3.2.4",
-    "vue-tsc": "^3.0.4"
-  }
+    "eslint": "^9.38.0",
+    "nuxt": "^4.2.0",
+    "vitest": "^4.0.4",
+    "vue-tsc": "^3.1.2"
+  },
+  "packageManager": "yarn@1.22.19+sha1.4ba7fc5c6e704fce2066ecbfb0b0d8976fe62447"
 }
