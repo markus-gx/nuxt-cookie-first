@@ -1,5 +1,6 @@
 import useCookieFirst from './composables/useCookieFirst'
-import { defineNuxtPlugin, useHead, useRuntimeConfig } from '#imports'
+import { defineNuxtPlugin, useHead, useRuntimeConfig, createError } from '#imports'
+import type { CookieFirstOptions, ModuleOptions } from '../module'
 
 const concatAndEncodeURLParams = (params: { [key: string]: unknown }) => {
   return Object.keys(params).filter(key => params[key]).map((key) => {
@@ -7,38 +8,38 @@ const concatAndEncodeURLParams = (params: { [key: string]: unknown }) => {
   }).join('&')
 }
 
-export default defineNuxtPlugin(() => {
-  const {
-    public: {
-      cookieFirst: {
-        apiKey,
-        host,
-        stealthMode,
-        silentMode,
-        language,
-        resetTabIndex,
-        useEuropeanCDN,
-      },
-    },
-  } = useRuntimeConfig()
+const resolveConfiguration = (cookieFirst: ModuleOptions): CookieFirstOptions => {
+  const currentHostname = window.location.hostname
+  // Handle Multi-Domain Setup
+  if (cookieFirst.sites && Array.isArray(cookieFirst.sites)) {
+    const matchingConfig = cookieFirst.sites.find((cfg: CookieFirstOptions) => cfg.host === currentHostname)
+    if (!matchingConfig) {
+      throw createError(`[NuxtCookieFirst] No CookieFirst configuration found for the current hostname: ${currentHostname}`)
+    }
+    return matchingConfig
+  }
 
-  if (apiKey) {
-    const baseURL = useEuropeanCDN
+  // Handle Single-Domain Setup
+  const config = cookieFirst as ModuleOptions
+  if (!config.host) {
+    config.host = currentHostname
+  }
+  return config
+}
+
+export default defineNuxtPlugin(() => {
+  const { public: { cookieFirst } } = useRuntimeConfig()
+  const config = resolveConfiguration(cookieFirst)
+  if (config.apiKey) {
+    const baseURL = config.useEuropeanCDN
       ? 'https://consent-eu.cookiefirst.com'
       : 'https://consent.cookiefirst.com'
-    const URL = host
-      ? `${baseURL}/sites/${host}-${apiKey}/consent.js?`
+    const URL = config.host
+      ? `${baseURL}/sites/${config.host}-${config.apiKey}/consent.js?`
       : `${baseURL}/banner.js?`
-    const params = host
-      ? { 'stealth-mode': stealthMode, 'silent-mode': silentMode, 'language': language }
-      : { 'cookiefirst-key': apiKey, 'stealth-mode': stealthMode, 'silent-mode': silentMode, 'language': language }
-
-    if (!host) {
-      // If no host is provided, we assume the user uses the legacy/deprecated version of CookieFirst.
-      console.warn('⚠️ DEPRECATED: The "host" option is not provided. The legacy version will be used but will be removed in the next major release (v1.1.0).')
-      console.warn('⚠️ MIGRATION: Update your configuration to include the "host" parameter to use the latest CookieFirst version.')
-      console.warn('📝 For more information, please refer to: https://github.com/markus-gx/nuxt-cookie-first/pull/10#issuecomment-3057687300')
-    }
+    const params = config.host
+      ? { 'stealth-mode': config.stealthMode, 'silent-mode': config.silentMode, 'language': config.language }
+      : { 'cookiefirst-key': config.apiKey, 'stealth-mode': config.stealthMode, 'silent-mode': config.silentMode, 'language': config.language }
     useHead({
       script: [
         {
@@ -49,7 +50,7 @@ export default defineNuxtPlugin(() => {
     })
   }
 
-  if (resetTabIndex) {
+  if (config.resetTabIndex) {
     const { onLayerReady } = useCookieFirst()
 
     onLayerReady((layer) => {

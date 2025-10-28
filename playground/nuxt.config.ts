@@ -6,10 +6,24 @@ export default defineNuxtConfig({
 
   cookieFirst: {
     apiKey: process.env.COOKIE_FIRST_API_KEY,
-    host: process.env.COOKIE_FIRST_HOST,
+    // host: process.env.COOKIE_FIRST_HOST,
     stealthMode: false,
     silentMode: false,
     language: 'en',
     resetTabIndex: true,
+    // sites: [
+    //   {
+    //     apiKey: process.env.COOKIE_FIRST_API_KEY,
+    //     host: 'wb.at',
+    //     stealthMode: false,
+    //     silentMode: false,
+    //   },
+    //   {
+    //     apiKey: process.env.COOKIE_FIRST_API_KEY,
+    //     stealthMode: true,
+    //     host: process.env.COOKIE_FIRST_HOST,
+    //     silentMode: true,
+    //   },
+    // ],
   },
 })

@@ -5,8 +5,7 @@ import type { Nuxt } from '@nuxt/schema'
 import defu from 'defu'
 import { addCustomTab } from '@nuxt/devtools-kit'
 
-// Module options TypeScript interface definition
-export interface ModuleOptions {
+export interface CookieFirstOptions {
   apiKey?: string
   host?: string
   stealthMode?: boolean
@@ -14,6 +13,10 @@ export interface ModuleOptions {
   language?: string // 2-letter ISO 639-1 code
   resetTabIndex?: boolean
   useEuropeanCDN?: boolean
+}
+// Module options TypeScript interface definition
+export interface ModuleOptions extends CookieFirstOptions {
+  sites: CookieFirstOptions[]
 }
 
 export default defineNuxtModule<ModuleOptions>({
